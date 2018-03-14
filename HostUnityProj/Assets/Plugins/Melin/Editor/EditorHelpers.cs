@@ -5,9 +5,15 @@ using System.Collections.Generic;
 
 public class EditorHelpers
 {
-    public static int RunCmd(string cmdExe, string args)
+    public struct CmdResult
     {
-        int result = -121;
+        public int code;
+        public string result;
+    }
+    public static CmdResult RunCmd(string cmdExe, string args)
+    {
+        int code = -121;
+        string result = string.Empty;
         try
         {
             using (System.Diagnostics.Process myPro = new System.Diagnostics.Process())
@@ -17,17 +23,21 @@ public class EditorHelpers
                 myPro.StartInfo.Arguments = args;
                 myPro.StartInfo.UseShellExecute = false;
                 myPro.StartInfo.CreateNoWindow = true;
+                myPro.StartInfo.RedirectStandardOutput = true;
+              //  myPro.StartInfo.RedirectStandardError = true;
                 myPro.Start();
+                result = myPro.StandardOutput.ReadToEnd();
+             //   Debug.Log(result);
 
                 myPro.WaitForExit();
-                result = myPro.ExitCode;
+                code = myPro.ExitCode;
             }
         }
         catch (System.Exception e)
         {
-            Debug.LogError("some error on " + cmdExe + args + " with exception " + e);
+            Debug.LogErrorFormat("some error on {0} {1} width exeception: {2}", cmdExe, args, e);
         }
-        return result;
+        return new CmdResult() { code = code, result = result };
     }
 
     public static string CreateAsset(Object asset, string pathname)

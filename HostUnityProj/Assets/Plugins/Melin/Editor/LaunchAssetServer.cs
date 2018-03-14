@@ -6,14 +6,14 @@ namespace ML
 {
     internal class LaunchAssetServer : ScriptableSingleton<LaunchAssetServer>
     {
-        const string kLocalAssetServerMenu = "Assets/Local Asset Server";
+        const string kLocalAssetServerMenu = "Melin/Local Asset Server";
 
         int m_serverPID = 0;
 
-        [MenuItem(kLocalAssetServerMenu)]
+        [MenuItem(kLocalAssetServerMenu, priority = 0)]
         public static void ToggleLocalServer()
         {
-            if(EditorHelpers.RunCmd("where", "python") == 1)
+            if(EditorHelpers.RunCmd("where", "python").code == 1)
             {
                 EditorUtility.DisplayDialog("^_^", "no python3+ found in PATH", "OK");
                 return;

@@ -34,7 +34,7 @@ for plug in plugs:
     else:
         url = cfg.get(plug, "url")
         if url:
-            logging.info("git clone plug: " + plug + "from: " + url)
+            logging.info("git clone plug: " + plug + " from: " + url)
             cmdrunner.system(gitclone.format(url, plugfoler))
     usedll = utils.str2bool(cfg.get(plug, "usedll"))
     if usedll and os.path.isdir(plugfoler):

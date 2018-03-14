@@ -37,8 +37,8 @@ namespace ML
 
     public class CustomBuilder : EditorWindow
     {
-        const string kMenuXBuild = "Assets/BundleBuild/X-Build %#x";
-        const string kMenuQuickBundle = "Assets/BundleBuild/Q-Build %#q";
+        const string kMenuXBuild = "Melin/BundleBuild/X-Build %#x";
+        const string kMenuQuickBundle = "Melin/BundleBuild/Q-Build %#q";
         [MenuItem(kMenuXBuild)]
         static void XBuild()
         {
@@ -75,7 +75,6 @@ namespace ML
 
         private void OnGUI()
         {
-
         }
     }
 }

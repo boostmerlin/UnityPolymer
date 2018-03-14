@@ -1,0 +1,21 @@
+syntax="proto3";
+package BB;
+
+option csharp_namespace = "Versons.Common";
+
+message VersionItem
+{
+     int32 channelId          = 1;  //渠道号
+     int32 appMinVersion      = 2;  //app最小版本号
+     int32 appTargetVersion   = 3;  //app目标版本号
+     int32 appTestVersion     = 4;  //app测试版本号
+     int32 resMinVersion      = 5;  //资源最小版本号
+     int32 resTargetVersion   = 6;  //资源目标版本号
+     int32 resTestVersion     = 7;  //资源测试版本号
+}
+message VersionCfg
+{
+     int32 version            = 1;  //版本号
+     int32 gameType           = 2;  //游戏类型
+	repeated VersionItem stVerItem    = 3;  //渠道版本项
+}
