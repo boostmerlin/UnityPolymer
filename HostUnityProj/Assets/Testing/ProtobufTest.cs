@@ -5,12 +5,12 @@ using Google.Protobuf;
 using Google.Protobuf.Examples.AddressBook;
 using System.IO;
 using System;
+using ML.Net;
+using UnityEngine.Assertions;
 
 public class ProtobufTest : MonoBehaviour
 {
-
-    // Use this for initialization
-    void Start()
+    void basicTest()
     {
         byte[] bytes;
         // Create a new person
@@ -28,7 +28,6 @@ public class ProtobufTest : MonoBehaviour
             bytes = stream.ToArray();
         }
         Person copy = Person.Parser.ParseFrom(bytes);
-
         AddressBook book = new AddressBook
         {
             People = { copy }
@@ -42,11 +41,35 @@ public class ProtobufTest : MonoBehaviour
         {
             throw new Exception("There is a bad person in here!");
         }
+        Debug.Log(restored.ToString());
+
+        var r = Hello.HelloRpcReflection.Descriptor;
+        msgheadTest();
+        int ab = 1;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-
+        basicTest();
     }
+
+    void msgheadTest()
+    {
+        int headLen = MsgHead.GetLength();
+        Debug.Log("MsgHead.GetLength " + headLen);
+        MsgHead.Default.msgid = 123;
+        MsgHead.Default.serviceid = 321;
+        var datas = MsgHead.Default.Encode(100);
+
+        Assert.AreEqual(datas.Length, headLen);
+
+        MsgHead head = new MsgHead();
+        head.Decode(datas);
+
+        Debug.Log("head.msgid=" + head.msgid);
+        Debug.Log("head.serviceid=" + head.serviceid);
+        Debug.Log("head.length=" + head.length);
+    }
+
 }

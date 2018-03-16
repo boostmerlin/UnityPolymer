@@ -45,7 +45,7 @@ class MLAutoInitialize
         }
     }
 
-    [MenuItem("GameObject/Melin")]
+    [MenuItem("Melin/Config")]
     static void initFramework()
     {
         var coms = Object.FindObjectsOfType<MSystem>();
@@ -64,7 +64,6 @@ class MLAutoInitialize
             Log.ML.Print("MLIntialize found in the scene.");
         }
     }
-
 
     [InitializeOnLoadMethod]
     static void OnProjectLoadedInEditor()

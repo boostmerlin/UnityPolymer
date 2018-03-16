@@ -8,7 +8,11 @@ public class EditorHelpers
     public struct CmdResult
     {
         public int code;
-        public string result;
+        public string msg;
+        public override string ToString()
+        {
+            return string.Format("code: {0}, result: {1}", code, msg);
+        }
     }
     public static CmdResult RunCmd(string cmdExe, string args)
     {
@@ -24,10 +28,14 @@ public class EditorHelpers
                 myPro.StartInfo.UseShellExecute = false;
                 myPro.StartInfo.CreateNoWindow = true;
                 myPro.StartInfo.RedirectStandardOutput = true;
-              //  myPro.StartInfo.RedirectStandardError = true;
+                myPro.StartInfo.RedirectStandardError = true;
                 myPro.Start();
-                result = myPro.StandardOutput.ReadToEnd();
-             //   Debug.Log(result);
+                result = myPro.StandardError.ReadToEnd();
+                if(string.IsNullOrEmpty(result))
+                {
+                    result = myPro.StandardOutput.ReadToEnd();
+                }
+                //   Debug.Log(result);
 
                 myPro.WaitForExit();
                 code = myPro.ExitCode;
@@ -37,7 +45,7 @@ public class EditorHelpers
         {
             Debug.LogErrorFormat("some error on {0} {1} width exeception: {2}", cmdExe, args, e);
         }
-        return new CmdResult() { code = code, result = result };
+        return new CmdResult() { code = code, msg = result };
     }
 
     public static string CreateAsset(Object asset, string pathname)
