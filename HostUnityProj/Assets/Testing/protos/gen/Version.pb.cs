@@ -22,13 +22,14 @@ namespace Versons.Common {
     static VersionReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg12ZXJzaW9uLnByb3RvEgJCQiKyAQoLVmVyc2lvbkl0ZW0SEQoJY2hhbm5l",
-            "bElkGAEgASgFEhUKDWFwcE1pblZlcnNpb24YAiABKAUSGAoQYXBwVGFyZ2V0",
-            "VmVyc2lvbhgDIAEoBRIWCg5hcHBUZXN0VmVyc2lvbhgEIAEoBRIVCg1yZXNN",
-            "aW5WZXJzaW9uGAUgASgFEhgKEHJlc1RhcmdldFZlcnNpb24YBiABKAUSFgoO",
-            "cmVzVGVzdFZlcnNpb24YByABKAUiUwoKVmVyc2lvbkNmZxIPCgd2ZXJzaW9u",
-            "GAEgASgFEhAKCGdhbWVUeXBlGAIgASgFEiIKCXN0VmVySXRlbRgDIAMoCzIP",
-            "LkJCLlZlcnNpb25JdGVtQhGqAg5WZXJzb25zLkNvbW1vbmIGcHJvdG8z"));
+            "Cg12ZXJzaW9uLnByb3RvEgd2ZXJzaW9uIrIBCgtWZXJzaW9uSXRlbRIRCglj",
+            "aGFubmVsSWQYASABKAUSFQoNYXBwTWluVmVyc2lvbhgCIAEoBRIYChBhcHBU",
+            "YXJnZXRWZXJzaW9uGAMgASgFEhYKDmFwcFRlc3RWZXJzaW9uGAQgASgFEhUK",
+            "DXJlc01pblZlcnNpb24YBSABKAUSGAoQcmVzVGFyZ2V0VmVyc2lvbhgGIAEo",
+            "BRIWCg5yZXNUZXN0VmVyc2lvbhgHIAEoBSJYCgpWZXJzaW9uQ2ZnEg8KB3Zl",
+            "cnNpb24YASABKAUSEAoIZ2FtZVR5cGUYAiABKAUSJwoJc3RWZXJJdGVtGAMg",
+            "AygLMhQudmVyc2lvbi5WZXJzaW9uSXRlbUIRqgIOVmVyc29ucy5Db21tb25i",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {

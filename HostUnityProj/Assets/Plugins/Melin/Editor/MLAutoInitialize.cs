@@ -9,7 +9,7 @@ class MLAutoInitialize
 {
     static void FGUIPackageConfig()
     {
-        var config = GUIConfig.Instance;
+        var config = GUIConfig.Selfie;
         if(!config.preloadAllLocalUI) return;
         string[] ids = AssetDatabase.FindAssets("@sprites t:textAsset");
         int cnt = ids.Length;

@@ -29,12 +29,13 @@ def create(args):
     logging.info("copy plugs...")
     cfg = utils.Config(buildplug.moduleini)
     plugs = buildplug.getusedplugs(cfg)
+    uniplugroot = cfg.get("DEFAULT", "uniplugroot")
     for plug in plugs:
         root = cfg.get(plug, "root")
         projname = cfg.get(plug, "projname")
         srcroot = cfg.get(plug, "srcroot")
         usedll = cfg.getbool(plug, "usedll")
-        plugdestfolder = os.path.join(args.pathname, "Assets", uniplugfolder)
+        plugdestfolder = os.path.join(args.pathname, "Assets", uniplugfolder, uniplugroot)
         logging.info("copy plug : " + plug)
 
         ref_dll_list = [cfg.get(plug, x) for x in cfg.options(plug) if x.startswith("refdll_")]

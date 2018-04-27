@@ -13,7 +13,7 @@ namespace ML.UI
 
         public bool LoadLocalPackage(string pkgName)
         {
-            return UIPackage.AddPackage(GUIConfig.Instance.LocalUIAssetsPath + "/" + pkgName) != null;
+            return UIPackage.AddPackage(GUIConfig.Selfie.LocalUIAssetsPath + "/" + pkgName) != null;
         }
 
         void IUIAssetCtrl.LoadRemotePackge(IAssetPath assetPath)
@@ -22,8 +22,8 @@ namespace ML.UI
 
         void remoteLoad(string pkgName, Action<int> action)
         {
-            string text = UI.GUIConfig.Instance.RemoteUIAssetsRootPath;
-            string ext = MelinConfig.Instance.bundleExt;
+            string text = UI.GUIConfig.Selfie.RemoteUIAssetsRootPath;
+            string ext = MelinConfig.Selfie.bundleExt;
 
             WWWLoader.GetAssetBundle(string.Format("{0}/{1}{2}", text, pkgName, ext))
                 .Subscribe((ab) =>
@@ -58,7 +58,7 @@ namespace ML.UI
             }
             else
             {
-                if (GUIConfig.Instance.checkRemoteAssetFirst)
+                if (GUIConfig.Selfie.checkRemoteAssetFirst)
                 {
                     remoteLoad(pkgName, (i) =>
                     {

@@ -76,7 +76,7 @@ namespace ML
             string serverroot = Application.dataPath.Substring(0, Application.dataPath.LastIndexOf("Assets"));
             KillRunningServer();
 
-            ProcessStartInfo startInfo = new ProcessStartInfo("python", "-m http.server " + MelinConfig.Instance.ServerPort);
+            ProcessStartInfo startInfo = new ProcessStartInfo("python", "-m http.server " + MelinConfig.Selfie.ServerPort);
             startInfo.WorkingDirectory = serverroot;
             startInfo.UseShellExecute = false;
 
@@ -87,11 +87,12 @@ namespace ML
 
             if (launchProcess == null || launchProcess.HasExited == true || launchProcess.Id == 0)
             {
-                UnityEngine.Debug.LogError("Unable Start AssetServer process");
+                Log.ML.PrintError("Unable Start AssetServer process");
             }
             else
             {
                 instance.m_serverPID = launchProcess.Id;
+                Log.ML.Print("Local AssetServer Listen: {0}, Root Dir: {1}", MelinConfig.Selfie.ServerPort, serverroot);
             }
         }
     }

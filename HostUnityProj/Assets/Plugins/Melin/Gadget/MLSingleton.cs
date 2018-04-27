@@ -12,7 +12,7 @@ namespace ML
     {
         static T _ins;
         static readonly object locker = new object();
-        public static T Self
+        public static T Selfie
         {
             get
             {
@@ -20,7 +20,7 @@ namespace ML
 #if DEBUG_ML
                 if(IsCheckOnMainThread)
                 {
-                    int t1 = MSystem.Instance.MainThreadId;
+                    int t1 = MSystem.Selfie.MainThreadId;
                     int t2 = Thread.CurrentThread.ManagedThreadId;
                     if (t1 != t2)
                     {
@@ -32,7 +32,7 @@ namespace ML
                 {
                     if (IsMono)
                     {
-                        _ins = MSystem.Instance.gameObject.AddComponent<T>();
+                        _ins = MSystem.Selfie.gameObject.AddComponent<T>();
                         MSystem.Container.Inject(_ins);
                         _ins.onInitialize();
                     }

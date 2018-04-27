@@ -1,9 +1,6 @@
 ﻿using ML.UI;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using FairyGUI;
-using System;
 
 public class MyUIView : UIView
 {
@@ -53,7 +50,7 @@ public class MyUIView : UIView
     public override void Bind()
     {
         viewModel = ViewModel.Get<MyUIViewModel>(this);
-        var d = this.BindGButtonTextToProperty(btn_Back, viewModel.btn_LabelText);
+        this.BindGButtonTextToProperty(btn_Back, viewModel.btn_LabelText);
         this.BindGButtonToHandler(btn_Back, ()=>
         {
             Debug.Log("btn back clickeddd..");
@@ -90,7 +87,7 @@ public class UITest2 : MonoBehaviour {
 	void Start () {
         UIView.RegAsset<MyUIView>("Basics", "Main");
 
-        GUIManager.Self.Push<MyUIView>();
+        GUIManager.Selfie.Push<MyUIView>();
     }
 
     // Update is called once per frame

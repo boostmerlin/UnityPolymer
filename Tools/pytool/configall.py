@@ -25,7 +25,8 @@ plugs = buildplug.getusedplugs(cfg)
 
 for plug in plugs:
     plugfoler = os.path.join(plugsfolder, plug)
-    if os.path.isdir(plugfoler):
+    logging.info("process plug: [%s] available in config.ini", plug)
+    if os.path.isdir(plugfoler): #simple check, todo: upgrade more clever
         if os.path.isdir(os.path.join(plugfoler, ".git")):
             logging.info("git update plug: %s", plug)
             os.chdir(plugfoler)
@@ -43,7 +44,7 @@ for plug in plugs:
             buildplug.gen_dll(csproj)
             buildplug.gain_dll(plug)
     else:
-        logging.info("gen no dll for config NO [usedll] or git operate failed.")
+        logging.info("generate no dll for [usedll=false] or git operation failed on plug: " + plug)
 
 
 

@@ -5,24 +5,24 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/uFrameMVVMExample/Scenes/MainMenuScene.unity
-    guid: 3c44b2c62e7711b478f3b49b467f3273
-  - enabled: 1
-    path: Assets/uFrameMVVMExample/Scenes/AssetsLoadingScene.unity
-    guid: 00509e61543e3ad4c95d1a7d1608719e
-  - enabled: 1
-    path: Assets/uFrameMVVMExample/Scenes/ExampleMVVMKernelScene.unity
-    guid: a2f7657d419c3ac4998c193f404275ec
-  - enabled: 1
-    path: Assets/uFrameMVVMExample/Scenes/IntroScene.unity
-    guid: 8ca473a0265dfa54788e55d20948e743
-  - enabled: 1
-    path: Assets/uFrameMVVMExample/Scenes/Level1.unity
-    guid: 571baa70d4b8fbc4aa8c210b9856c84c
-  - enabled: 1
-    path: Assets/uFrameMVVMExample/Scenes/Level2.unity
-    guid: a12521e9a2e7bb64cabade09143ae055
-  - enabled: 1
-    path: Assets/uFrameMVVMExample/Scenes/Level3.unity
-    guid: c4783db9bfb0ac34d9f25cf5d250025c
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000

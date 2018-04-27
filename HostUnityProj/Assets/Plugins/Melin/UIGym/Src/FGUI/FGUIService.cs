@@ -10,7 +10,7 @@ namespace ML.UI
     {
         void IUIManagerService.InitLoadAssets(IUIAssetCtrl assetCtrl)
         {
-            var config = GUIConfig.Instance;
+            var config = GUIConfig.Selfie;
             var assets = config.preloadAssets;
             for(int i = 0; i < assets.Length; i++)
             {
@@ -20,7 +20,7 @@ namespace ML.UI
 
         IUIAssetCtrl IUIManagerService.InitManager()
         {
-            var config = GUIConfig.Instance;
+            var config = GUIConfig.Selfie;
             GRoot.inst.SetContentScaleFactor(config.designResoWidth, config.designResoHeight, config.screenMatchMode);
             var container = MSystem.Container;
             var assetCtrl = new FGUIAssetsCtrl();

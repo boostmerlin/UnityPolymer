@@ -458,7 +458,7 @@ namespace ML.Net
 
                 if (OnStateReport != null)
                 {
-                    OnStateReport("Begin connect in tcp connection.");
+                    OnStateReport(string.Format("Begin connect in tcp connection on {0}:{1}", iporhost, ip));
                 }
 
                 mTcp.BeginConnect(ip, port, new AsyncCallback(ConnectCallback), mTcp);

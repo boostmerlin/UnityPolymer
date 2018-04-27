@@ -27,15 +27,14 @@ namespace Google.Protobuf.Examples.AddressBook {
             "GAMgASgJEiwKBnBob25lcxgEIAMoCzIcLnR1dG9yaWFsLlBlcnNvbi5QaG9u",
             "ZU51bWJlchpHCgtQaG9uZU51bWJlchIOCgZudW1iZXIYASABKAkSKAoEdHlw",
             "ZRgCIAEoDjIaLnR1dG9yaWFsLlBlcnNvbi5QaG9uZVR5cGUiKwoJUGhvbmVU",
-            "eXBlEgoKBk1PQklMRRAAEggKBEhPTUUQARIICgRXT1JLEAIiTAoLQWRkcmVz",
-            "c0Jvb2sSGwoDY2ZnGAEgASgLMg4uQkIuVmVyc2lvbkNmZxIgCgZwZW9wbGUY",
-            "AiADKAsyEC50dXRvcmlhbC5QZXJzb25CJ6oCJEdvb2dsZS5Qcm90b2J1Zi5F",
-            "eGFtcGxlcy5BZGRyZXNzQm9va2IGcHJvdG8z"));
+            "eXBlEgoKBk1PQklMRRAAEggKBEhPTUUQARIICgRXT1JLEAIiLwoLQWRkcmVz",
+            "c0Jvb2sSIAoGcGVvcGxlGAEgAygLMhAudHV0b3JpYWwuUGVyc29uQieqAiRH",
+            "b29nbGUuUHJvdG9idWYuRXhhbXBsZXMuQWRkcmVzc0Jvb2tiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Versons.Common.VersionReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Person), global::Google.Protobuf.Examples.AddressBook.Person.Parser, new[]{ "Name", "Id", "Email", "Phones" }, null, new[]{ typeof(global::Google.Protobuf.Examples.AddressBook.Person.Types.PhoneType) }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Person.Types.PhoneNumber), global::Google.Protobuf.Examples.AddressBook.Person.Types.PhoneNumber.Parser, new[]{ "Number", "Type" }, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.AddressBook), global::Google.Protobuf.Examples.AddressBook.AddressBook.Parser, new[]{ "Cfg", "People" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.AddressBook), global::Google.Protobuf.Examples.AddressBook.AddressBook.Parser, new[]{ "People" }, null, null, null)
           }));
     }
     #endregion
@@ -426,7 +425,6 @@ namespace Google.Protobuf.Examples.AddressBook {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public AddressBook(AddressBook other) : this() {
-      Cfg = other.cfg_ != null ? other.Cfg.Clone() : null;
       people_ = other.people_.Clone();
     }
 
@@ -435,21 +433,10 @@ namespace Google.Protobuf.Examples.AddressBook {
       return new AddressBook(this);
     }
 
-    /// <summary>Field number for the "cfg" field.</summary>
-    public const int CfgFieldNumber = 1;
-    private global::Versons.Common.VersionCfg cfg_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Versons.Common.VersionCfg Cfg {
-      get { return cfg_; }
-      set {
-        cfg_ = value;
-      }
-    }
-
     /// <summary>Field number for the "people" field.</summary>
-    public const int PeopleFieldNumber = 2;
+    public const int PeopleFieldNumber = 1;
     private static readonly pb::FieldCodec<global::Google.Protobuf.Examples.AddressBook.Person> _repeated_people_codec
-        = pb::FieldCodec.ForMessage(18, global::Google.Protobuf.Examples.AddressBook.Person.Parser);
+        = pb::FieldCodec.ForMessage(10, global::Google.Protobuf.Examples.AddressBook.Person.Parser);
     private readonly pbc::RepeatedField<global::Google.Protobuf.Examples.AddressBook.Person> people_ = new pbc::RepeatedField<global::Google.Protobuf.Examples.AddressBook.Person>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Google.Protobuf.Examples.AddressBook.Person> People {
@@ -469,7 +456,6 @@ namespace Google.Protobuf.Examples.AddressBook {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Cfg, other.Cfg)) return false;
       if(!people_.Equals(other.people_)) return false;
       return true;
     }
@@ -477,7 +463,6 @@ namespace Google.Protobuf.Examples.AddressBook {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (cfg_ != null) hash ^= Cfg.GetHashCode();
       hash ^= people_.GetHashCode();
       return hash;
     }
@@ -489,19 +474,12 @@ namespace Google.Protobuf.Examples.AddressBook {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (cfg_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Cfg);
-      }
       people_.WriteTo(output, _repeated_people_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (cfg_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Cfg);
-      }
       size += people_.CalculateSize(_repeated_people_codec);
       return size;
     }
@@ -510,12 +488,6 @@ namespace Google.Protobuf.Examples.AddressBook {
     public void MergeFrom(AddressBook other) {
       if (other == null) {
         return;
-      }
-      if (other.cfg_ != null) {
-        if (cfg_ == null) {
-          cfg_ = new global::Versons.Common.VersionCfg();
-        }
-        Cfg.MergeFrom(other.Cfg);
       }
       people_.Add(other.people_);
     }
@@ -529,13 +501,6 @@ namespace Google.Protobuf.Examples.AddressBook {
             input.SkipLastField();
             break;
           case 10: {
-            if (cfg_ == null) {
-              cfg_ = new global::Versons.Common.VersionCfg();
-            }
-            input.ReadMessage(cfg_);
-            break;
-          }
-          case 18: {
             people_.AddEntriesFrom(input, _repeated_people_codec);
             break;
           }

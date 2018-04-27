@@ -12,8 +12,6 @@ package tutorial;
 
 // [END declaration]
 
-import "version.proto";
-
 // [START csharp_declaration]
 option csharp_namespace = "Google.Protobuf.Examples.AddressBook";
 // [END csharp_declaration]
@@ -40,8 +38,6 @@ message Person {
 
 // Our address book file is just one of these.
 message AddressBook {
-  BB.VersionCfg cfg = 1;
-
-  repeated Person people = 2;
+  repeated Person people = 1;
 }
 // [END messages]

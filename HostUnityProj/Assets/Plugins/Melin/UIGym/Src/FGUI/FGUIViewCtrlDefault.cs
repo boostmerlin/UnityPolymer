@@ -22,7 +22,7 @@ namespace ML.UI
         {
             if (this.isShowing && bringToFontOnClick)
             {
-                GUIManager.Self.BringViewToFront(m_view.ViewId);
+                GUIManager.Selfie.BringViewToFront(m_view.ViewId);
             }
         }
 
@@ -34,7 +34,7 @@ namespace ML.UI
 
         protected override void DoHideAnimation()
         {
-            GUIManager.Self.Pop();
+            GUIManager.Selfie.Pop();
         }
     }
 

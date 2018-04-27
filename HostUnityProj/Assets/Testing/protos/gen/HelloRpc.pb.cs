@@ -24,14 +24,20 @@ namespace Hello {
           string.Concat(
             "Cg5IZWxsb1JwYy5wcm90bxIFaGVsbG8iIAoMSGVsbG9SZXF1ZXN0EhAKCGdy",
             "ZWV0aW5nGAEgASgJIi4KDUhlbGxvUmVzcG9uc2USDQoFcmVwbHkYASABKAkS",
-            "DgoGbnVtYmVyGAQgAygFMkcKDEhlbGxvU2VydmljZRI3CghTYXlIZWxsbxIT",
-            "LmhlbGxvLkhlbGxvUmVxdWVzdBoULmhlbGxvLkhlbGxvUmVzcG9uc2UiAGIG",
-            "cHJvdG8z"));
+            "DgoGbnVtYmVyGAQgAygFIiAKDFdvcmxkUmVxdWVzdBIQCghncmVldGluZxgB",
+            "IAEoCSIeCg1Xb3JsZFJlc3BvbnNlEg0KBXJlcGx5GAEgASgJMkUKDEhlbGxv",
+            "U2VydmljZRI1CghTYXlIZWxsbxITLmhlbGxvLkhlbGxvUmVxdWVzdBoULmhl",
+            "bGxvLkhlbGxvUmVzcG9uc2UyfAoMV29ybGRTZXJ2aWNlEjUKCFNheUhlbGxv",
+            "EhMuaGVsbG8uSGVsbG9SZXF1ZXN0GhQuaGVsbG8uSGVsbG9SZXNwb25zZRI1",
+            "CghTYXlXb3JsZBITLmhlbGxvLldvcmxkUmVxdWVzdBoULmhlbGxvLldvcmxk",
+            "UmVzcG9uc2ViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Hello.HelloRequest), global::Hello.HelloRequest.Parser, new[]{ "Greeting" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Hello.HelloResponse), global::Hello.HelloResponse.Parser, new[]{ "Reply", "Number" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Hello.HelloResponse), global::Hello.HelloResponse.Parser, new[]{ "Reply", "Number" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Hello.WorldRequest), global::Hello.WorldRequest.Parser, new[]{ "Greeting" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Hello.WorldResponse), global::Hello.WorldResponse.Parser, new[]{ "Reply" }, null, null, null)
           }));
     }
     #endregion
@@ -285,6 +291,240 @@ namespace Hello {
           case 34:
           case 32: {
             number_.AddEntriesFrom(input, _repeated_number_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class WorldRequest : pb::IMessage<WorldRequest> {
+    private static readonly pb::MessageParser<WorldRequest> _parser = new pb::MessageParser<WorldRequest>(() => new WorldRequest());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<WorldRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Hello.HelloRpcReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public WorldRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public WorldRequest(WorldRequest other) : this() {
+      greeting_ = other.greeting_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public WorldRequest Clone() {
+      return new WorldRequest(this);
+    }
+
+    /// <summary>Field number for the "greeting" field.</summary>
+    public const int GreetingFieldNumber = 1;
+    private string greeting_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Greeting {
+      get { return greeting_; }
+      set {
+        greeting_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as WorldRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(WorldRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Greeting != other.Greeting) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Greeting.Length != 0) hash ^= Greeting.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Greeting.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Greeting);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Greeting.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Greeting);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(WorldRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Greeting.Length != 0) {
+        Greeting = other.Greeting;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            Greeting = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class WorldResponse : pb::IMessage<WorldResponse> {
+    private static readonly pb::MessageParser<WorldResponse> _parser = new pb::MessageParser<WorldResponse>(() => new WorldResponse());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<WorldResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Hello.HelloRpcReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public WorldResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public WorldResponse(WorldResponse other) : this() {
+      reply_ = other.reply_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public WorldResponse Clone() {
+      return new WorldResponse(this);
+    }
+
+    /// <summary>Field number for the "reply" field.</summary>
+    public const int ReplyFieldNumber = 1;
+    private string reply_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Reply {
+      get { return reply_; }
+      set {
+        reply_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as WorldResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(WorldResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Reply != other.Reply) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Reply.Length != 0) hash ^= Reply.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Reply.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Reply);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Reply.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Reply);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(WorldResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Reply.Length != 0) {
+        Reply = other.Reply;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            Reply = input.ReadString();
             break;
           }
         }

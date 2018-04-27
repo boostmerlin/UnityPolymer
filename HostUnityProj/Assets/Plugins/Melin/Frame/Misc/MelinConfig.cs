@@ -20,7 +20,7 @@ namespace ML
                 return string.Format("{0}:{1}/{2}", ServerUrl, ServerPort, ExternalAssets);
             }
         }
-        public static MelinConfig Instance
+        public static MelinConfig Selfie
         {
             get
             {

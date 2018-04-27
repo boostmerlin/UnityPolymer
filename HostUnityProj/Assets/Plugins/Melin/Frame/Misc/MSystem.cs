@@ -24,7 +24,7 @@ namespace ML
             services.Add(service);
         }
 
-        public static MSystem Instance
+        public static MSystem Selfie
         {
             get
             {
@@ -200,10 +200,10 @@ namespace ML
         #endregion
         public T AddComponent<T>() where T : Component
         {
-            T com = Instance.gameObject.GetComponent<T>();
+            T com = Selfie.gameObject.GetComponent<T>();
             if (!com)
             {
-                com = Instance.gameObject.AddComponent<T>();
+                com = Selfie.gameObject.AddComponent<T>();
             }
             return com;
         }
@@ -255,11 +255,11 @@ namespace ML
             _ins = this;
             MainThreadId = Thread.CurrentThread.ManagedThreadId;
             Log.ML.Print("MLIntialize on Main Thread: {0}", MainThreadId);
-            WWWLoader.UrlRoot = MelinConfig.Instance.ServerRootPath;
+            WWWLoader.UrlRoot = MelinConfig.Selfie.ServerRootPath;
 #if USE_UGUI
 #else
             Container.Register<IUIManagerService, FGUIService>();
-            bool ok = GUIManager.Self.Check();
+            bool ok = GUIManager.Selfie.Check();
             if(!ok)
             {
                 Log.ML.PrintWarning("GUIManager Not ready.");

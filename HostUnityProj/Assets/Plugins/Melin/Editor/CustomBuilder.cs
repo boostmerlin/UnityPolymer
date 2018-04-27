@@ -7,7 +7,7 @@ namespace ML
 
     public class BuilderConfig : ScriptableObject
     {
-        public static BuilderConfig instance
+        public static BuilderConfig Selfie
         {
             get
             {
@@ -25,7 +25,7 @@ namespace ML
             {
                 path = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));
             }
-            bundleOutRoot = Path.Combine(path, MelinConfig.Instance.ExternalAssets);
+            bundleOutRoot = Path.Combine(path, MelinConfig.Selfie.ExternalAssets);
         }
         public BuildTarget buildTarget;
         public BuildAssetBundleOptions bundleOptions = BuildAssetBundleOptions.None;
@@ -49,18 +49,18 @@ namespace ML
         [MenuItem(kMenuQuickBundle)]
         static void QuickBundle()
         {
-            var path = BuilderConfig.instance.bundleOutRoot;
+            var path = BuilderConfig.Selfie.bundleOutRoot;
             path = Path.Combine(path, getBuildTargetName());
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
-            BuildPipeline.BuildAssetBundles(path, BuilderConfig.instance.bundleOptions, BuilderConfig.instance.buildTarget);
+            BuildPipeline.BuildAssetBundles(path, BuilderConfig.Selfie.bundleOptions, BuilderConfig.Selfie.buildTarget);
         }
 
         static string getBuildTargetName()
         {
-            string lower = BuilderConfig.instance.buildTarget.ToString().ToLower();
+            string lower = BuilderConfig.Selfie.buildTarget.ToString().ToLower();
 
             string[] names = { "android", "osx", "win", "webgl", "linux", "ios" };
             foreach (var name in names)

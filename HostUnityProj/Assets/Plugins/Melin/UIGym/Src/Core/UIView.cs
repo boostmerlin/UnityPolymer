@@ -60,6 +60,9 @@ namespace ML.UI
         public bool ShowAnimation { get; set; }
         public bool HideAnimation { get; set; }
 
+        /// <summary>
+        /// View 是否是窗口，标题，模态，关闭等特性
+        /// </summary>
         public bool IsWindow { get; set; }
 
         bool m_fillScreen;
@@ -148,7 +151,7 @@ namespace ML.UI
         {
             m_viewCtrl = Container.ResolveNew<IViewCtrl>(ViewCtrlId);
             m_viewCtrl.OwnerView = this;
-            ShowAnimation = GUIConfig.Instance.animationEnable;
+            ShowAnimation = GUIConfig.Selfie.animationEnable;
             HideAnimation = ShowAnimation;
         }
 

@@ -1,14 +1,25 @@
 syntax = "proto3";
 package hello;
 
-
 message HelloRequest {
-string greeting = 1;
+    string greeting = 1;
 }
 message HelloResponse {
-string reply = 1;
-repeated int32 number=4;
+    string reply = 1;
+    repeated int32 number=4;
 }
 service HelloService {
-rpc SayHello(HelloRequest) returns (HelloResponse){}
+    rpc SayHello(HelloRequest) returns (HelloResponse);
+}
+
+message WorldRequest {
+    string greeting = 1;
+}
+message WorldResponse {
+    string reply = 1;
+}
+
+service WorldService {
+    rpc SayHello(HelloRequest) returns (HelloResponse);
+    rpc SayWorld(WorldRequest) returns (WorldResponse);
 }

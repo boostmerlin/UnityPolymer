@@ -10,6 +10,7 @@ using UnityEngine.Assertions;
 
 public class ProtobufTest : MonoBehaviour
 {
+    TcpConnection tcpConnection;
     void basicTest()
     {
         byte[] bytes;
@@ -44,32 +45,72 @@ public class ProtobufTest : MonoBehaviour
         Debug.Log(restored.ToString());
 
         var r = Hello.HelloRpcReflection.Descriptor;
-        msgheadTest();
-        int ab = 1;
+
+        Debug.Log(r.ToString());
 
     }
 
     void Start()
     {
         basicTest();
+        msgTest();
+        tcpConnection = new TcpConnection();
+        tcpConnection.OnConnect += new ConnectionHandler((ss, ok) =>
+        {
+            Debug.LogFormat("connect state: {0}, {1}", ss.ToString(), ok);
+        });
+        tcpConnection.OnStateReport += new StateReportHandler((msg) =>
+        {
+            Debug.LogFormat(msg);
+        });
     }
 
-    void msgheadTest()
+    private void OnDestroy()
+    {
+        tcpConnection.Disconnect();
+    }
+
+    void netConnect()
+    {
+        tcpConnection.BeginConnect("127.0.0.1", 9999);
+    }
+
+    private void OnGUI()
+    {
+        if(GUILayout.Button("Connect"))
+        {
+            netConnect();
+        }
+    }
+
+
+    void msgTest()
     {
         int headLen = MsgHead.GetLength();
         Debug.Log("MsgHead.GetLength " + headLen);
-        MsgHead.Default.msgid = 123;
-        MsgHead.Default.serviceid = 321;
-        var datas = MsgHead.Default.Encode(100);
+        MsgHead.DefaultHead.MsgId = 123;
+        MsgHead.DefaultHead.ServiceId = 321;
+        MsgHead.DefaultHead.EncodeHead(100);
+        var datas = MsgHead.DefaultHead.GetBytes();
 
         Assert.AreEqual(datas.Length, headLen);
 
-        MsgHead head = new MsgHead();
-        head.Decode(datas);
+        MsgHead head = MsgHead.DefaultHead;
+        head.DecodeHead(datas);
 
-        Debug.Log("head.msgid=" + head.msgid);
-        Debug.Log("head.serviceid=" + head.serviceid);
-        Debug.Log("head.length=" + head.length);
+        Debug.Log("head.msgid=" + head.MsgId);
+        Debug.Log("head.serviceid=" + head.ServiceId);
+        Debug.Log("head.length=" + head.Length);
+
+
+        Person person = new Person
+        {
+            Id = 1,
+            Name = "Foo",
+            Email = "foo@bar",
+            Phones = { new Person.Types.PhoneNumber { Number = "555-1212" } }
+        };
+        NetMsg msg = NetMsg.Create(111);
+        msg.ProtobufMessage = person;
     }
-
 }

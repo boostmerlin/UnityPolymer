@@ -1,5 +1,5 @@
 syntax="proto3";
-package BB;
+package version;
 
 option csharp_namespace = "Versons.Common";
 
@@ -19,3 +19,4 @@ message VersionCfg
      int32 gameType           = 2;  //游戏类型
 	repeated VersionItem stVerItem    = 3;  //渠道版本项
 }
+

@@ -1,12 +1,19 @@
-## 方便管理和整合常用的框架，工具。也会把一些开发中的积累放在这里
-
+### 方便管理和整合常用的框架，工具。也会把一些开发中的积累放在这里
+-------------
+#### 必要环境：
 * 安装python3.5+ ？
 * 把UnityPolymer\Tools\bin 放到path环境变量里
+* 安装vs2017
 * ploymer.bat init 获取Plugs.ini中配置的插件，将放置于Plugs文件夹下，也可以手动拷贝到该目录下配置
-> Plugs.ini信息参见该文件  
+* Lib 文件夹放置编译后或者手动拷贝的库文件
+> sharpmake是一个生成vs工程等的工具，见：https://github.com/ubisoftinc/Sharpmake
 
-[DEFAULT]
-;msbuild 安装位置
+
+#### Plugs.ini 配置文件：
+*该文件用来管理，编译插件*  
+;默认值  
+[DEFAULT]  
+;msbuild 安装位置  
 msbuild=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin  
 ;默认的 lib root is ..\.., 即git根目录  
 ;libroot=..\..  
@@ -33,5 +40,4 @@ defines=NET35
 skip=false  
 
 * ploymer.bat create 创建unity工程，初始目录位于：Tools\pytool
->hostunityproj使用的是unity 2017版本
-
+> hostunityproj使用的是unity 2017版本

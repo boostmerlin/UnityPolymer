@@ -21,11 +21,11 @@ public class UITest1 : MonoBehaviour {
         view.OnNewLayer = true;
         //  view.Modal = true;
         //  GUIManager.Self.MinUnpopLayer = -1;
-        m_view = GUIManager.Self.Push<UIView>();
+        m_view = GUIManager.Selfie.Push<UIView>();
         m_view.FillScreen = true;
         //   m_view = GUIManager.Self.Push<UIView>(true);
         //  m_view = GUIManager.Self.Push<UIView>(true);
-        GUIManager.Self.Push(view, true);
+        GUIManager.Selfie.Push(view, true);
 
         view = UIView.CreateView("Basics", "WindowA");
         view.IsWindow = true;
@@ -33,19 +33,19 @@ public class UITest1 : MonoBehaviour {
         //view.OnNewLayer = true;
         //view.FillScreen = true;
         //  view.Modal = true;
-        GUIManager.Self.Push(view, true);
+        GUIManager.Selfie.Push(view, true);
 
         view = UIView.CreateView("Basics", "WindowB");
         view.IsWindow = true;
         view.DestroyWhenHide = true;
       //  view.OnNewLayer = true;
         view.Modal = true;
-        GUIManager.Self.Push(view, true);
+        GUIManager.Selfie.Push(view, true);
         m_view = view;
 
         Observable.IntervalFrame(200).Subscribe((v) =>
         {
-            GUIManager.Self.Pop();
+            GUIManager.Selfie.Pop();
             int n = GRoot.inst.numChildren;
             Debug.Log(n);
             for (int i = 0; i < n; i++)
@@ -66,7 +66,7 @@ public class UITest1 : MonoBehaviour {
     {
         if(GUILayout.Button("Click Me"))
         {
-            GUIManager.Self.Push(m_view);
+            GUIManager.Selfie.Push(m_view);
         }
     }
 }

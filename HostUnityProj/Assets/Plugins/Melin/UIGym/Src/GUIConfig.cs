@@ -30,7 +30,7 @@ namespace ML.UI
 
         public bool checkRemoteAssetFirst = false;
 
-        public static GUIConfig Instance
+        public static GUIConfig Selfie
         {
             get
             {

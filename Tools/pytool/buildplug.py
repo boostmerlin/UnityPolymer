@@ -137,4 +137,4 @@ def config_sharp_template(template_file: str, plug, cfg: utils.Config):
     f.truncate()
     f.write(filecontent)
     f.close()
-    
+
