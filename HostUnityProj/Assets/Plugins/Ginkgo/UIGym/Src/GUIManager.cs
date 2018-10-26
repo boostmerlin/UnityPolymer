@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Ginkgo.IOC;
 using UniRx;
-using System.Linq;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif

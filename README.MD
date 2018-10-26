@@ -20,7 +20,8 @@ msbuild=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15
 ;拷贝文件时的扩展名  
 ;srcexts=.cs
 
-;一个插件节点  
+;一个插件节点
+;官方的pb不再支持.net35了
 [protobuf]  
 ;git src url. clone 之后的根目录名为节点名.  
 url=https://github.com/google/protobuf.git  
@@ -31,13 +32,15 @@ projname=Google.Protobuf
 ;插件源码根目录, 相对于root目录, 如果 usedll=false,  这个目录下的源码会拷贝到unity工程
 srcroot=Google.Protobuf  
 ;是否使用dll还是源码  
-usedll=true  
+usedll=true
 ;编译dll时的预编译宏  
-defines=NET35  
+;defines=NET35  
 ;依赖插件，即使skip=false，也会使用  
 ;relyon=UniRx,protobuf  
 ;是否跳过处理这个节点的插件  
 skip=false  
 
-* ploymer.bat create 创建unity工程，初始目录位于：Tools\pytool
+* ploymer.bat create --pathname 创建unity工程，如果不指定目录，初始目录位于：Tools\pytool
 > hostunityproj使用的是unity 2017版本
+
+错误：

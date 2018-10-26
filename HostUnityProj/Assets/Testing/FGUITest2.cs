@@ -1,4 +1,5 @@
-﻿using Ginkgo.UI;
+﻿#if USE_FGUI
+using Ginkgo.UI;
 using UnityEngine;
 using FairyGUI;
 
@@ -95,3 +96,4 @@ public class FGUITest2 : MonoBehaviour {
 		
 	}
 }
+#endif

@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Ginkgo.UI
 {
+    /// <summary>
+    /// basic view represent a UI
+    /// </summary>
     public class UIView : MComponent, IBinding
     {
         public const int kHided = 0;

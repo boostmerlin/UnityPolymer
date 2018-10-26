@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Ginkgo.UI
 {
+    /// <summary>
+    /// Control View Behavior.
+    /// </summary>
     public interface IViewCtrl
     {
         void AttachToViewLayer();

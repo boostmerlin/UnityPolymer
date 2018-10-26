@@ -45,7 +45,7 @@ def create(args):
                 logging.info("copy ref lib dll: " + dll)
                 utils.copy(os.path.join(buildplug.libroot, dll), plugdestfolder, buildplug.libroot)
 
-        if not usedll: # copy sources file.
+        if not usedll:# copy sources file.
             plugfoler = os.path.join(buildplug.modulefolder, plug, root, srcroot)
             if not os.path.isdir(plugfoler):
                 logging.warning("plug [%s] src files not exist?", plug)
@@ -76,7 +76,6 @@ def create(args):
             if os.path.exists(srcxmlfile):
                 shutil.copy(srcxmlfile, plugdestfolder)
 
-
     logging.info("create project over.")
 
 def compilemodule(args):
@@ -103,7 +102,7 @@ def compilemodule(args):
             buildplug.gain_dll(plug, clean)
 
 parser = argparse.ArgumentParser()
-parser.set_defaults(help="sss")
+parser.set_defaults(help="useless")
 subparsers = parser.add_subparsers(help="projector sub-command", description='valid subcommands')
 parser_create = subparsers.add_parser("create", help="create unity project using HostUnityProj")
 parser_create.add_argument("--pathname", required=True, help="project destination folder.")
@@ -119,8 +118,8 @@ parser_compile.add_argument("--config", help="build config type",
                            choices=["Debug", "Release"], default="Debug")
 parser_compile.add_argument("--clean", help="clean build folder. this is not moduledllfolder")
 parser_compile.set_defaults(func=compilemodule)
-sysargs = sys.argv[1:]
-if len(sysargs) == 0:
-    sysargs.append("--help")
-args = parser.parse_args(sysargs)
+sys_args = sys.argv[1:]
+if len(sys_args) == 0:
+    sys_args.append("--help")
+args = parser.parse_args(sys_args)
 args.func(args)

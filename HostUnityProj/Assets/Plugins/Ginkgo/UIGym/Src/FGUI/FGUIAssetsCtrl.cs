@@ -1,9 +1,11 @@
-﻿using System;
+﻿#if USE_FGUI
+using System;
 using UniRx;
 using FairyGUI;
 
 namespace Ginkgo.UI
 {
+    //bridge of UIPackage
     public class FGUIAssetsCtrl : IUIAssetCtrl
     {
         object IUIAssetCtrl.CreateObject(string pkgName, string componentName)
@@ -16,7 +18,7 @@ namespace Ginkgo.UI
             return UIPackage.AddPackage(GUIConfig.Selfie.LocalUIAssetsPath + "/" + pkgName) != null;
         }
 
-        void IUIAssetCtrl.LoadRemotePackge(IAssetPath assetPath)
+        void IUIAssetCtrl.LoadRemotePackge(string[] assetPath)
         {
         }
 
@@ -100,3 +102,4 @@ namespace Ginkgo.UI
         }
     }
 }
+#endif

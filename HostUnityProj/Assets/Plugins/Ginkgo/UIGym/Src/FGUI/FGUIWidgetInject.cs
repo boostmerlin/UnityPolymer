@@ -1,4 +1,5 @@
-﻿using FairyGUI;
+﻿#if USE_FGUI
+using FairyGUI;
 using System;
 using System.Reflection;
 using System.Collections.Generic;
@@ -106,3 +107,4 @@ namespace Ginkgo.UI
         }
     }
 }
+#endif

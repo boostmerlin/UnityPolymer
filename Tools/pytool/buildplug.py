@@ -13,6 +13,8 @@ __sharpmake_template= "..\\sharpmake_template\\sharpmake_template\\sharpmake_tem
 buildconfig = "Debug"
 sharpmake_gen_folder = "generated"
 libroot = "..\\.."
+lib_name = "Lib"
+unity_assemblies = "UnityAssemblies"
 
 libroot = utils.read_config(moduleini, "DEFAULT", "libroot", libroot)
 
@@ -69,7 +71,7 @@ def gen_csproj(plug: str):
     shutil.copy(__sharpmake_template, dest_file)
     config_sharp_template(dest_file, plug, cfg)
     #copy lib
-    deslibroot = os.path.join(root_full, "Lib")
+    deslibroot = os.path.join(root_full, lib_name)
     for dll in ref_dll_list:
         utils.copy(os.path.join(libroot, dll), deslibroot, libroot)
 
@@ -124,15 +126,19 @@ def gain_dll(plug: str, clean=False):
 TPL_projName = "[sharpmake.projname]"
 TPL_srcRoot = "[sharpmake.srcroot]"
 TPL_defines = "[sharpmake.defines]"
+TPL_framework = "[sharpmake.framework]"
 def config_sharp_template(template_file: str, plug, cfg: utils.Config):
     projname = cfg.get(plug, "projname")
     srcroot = cfg.get(plug, "srcroot")
     defines = cfg.get(plug, "defines")
+    framework = cfg.get(plug, "framework", "v3_5")
     f = open(template_file, "r+")
     filecontent = f.read()
     filecontent = filecontent.replace(TPL_projName, projname, 1)
     filecontent = filecontent.replace(TPL_srcRoot, srcroot, 1)
     filecontent = filecontent.replace(TPL_defines, defines, 1)
+    if framework:
+        filecontent = filecontent.replace(TPL_framework, framework, 1)
     f.seek(0)
     f.truncate()
     f.write(filecontent)

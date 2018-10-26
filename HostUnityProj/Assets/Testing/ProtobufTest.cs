@@ -23,6 +23,7 @@ public class MsgService : BaseMsgService
 
     public void hello_HelloRequest(IMessage req)
     {
+
     }
 
     [NetHandler]

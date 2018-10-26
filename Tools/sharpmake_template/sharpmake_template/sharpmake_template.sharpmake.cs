@@ -27,7 +27,7 @@ namespace CSProjTemplate
                 // When building for the .NET framework, you can specify a .NET
                 // Framework to target. As always, you can use the bit OR
                 // operator to specify many at once.
-                framework: DotNetFramework.v3_5
+                framework: DotNetFramework.[sharpmake.framework]
             )
         };
         }

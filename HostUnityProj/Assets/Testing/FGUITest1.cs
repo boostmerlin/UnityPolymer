@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#if USE_FGUI
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -14,7 +15,7 @@ public class FGUITest1 : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        #region guimanager
+#region guimanager
         UIView.RegAsset<UIView>("Basics", "Main");
         UIView view = UIView.CreateView("Bag", "BagWin");
         view.IsWindow = true;
@@ -53,7 +54,7 @@ public class FGUITest1 : MonoBehaviour {
                 Debug.Log(GRoot.inst.GetChildAt(i).displayObject.gameObject.name);
             }
         });
-        #endregion
+#endregion
 
     }
 
@@ -70,3 +71,4 @@ public class FGUITest1 : MonoBehaviour {
         }
     }
 }
+#endif

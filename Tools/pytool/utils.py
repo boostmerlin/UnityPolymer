@@ -4,6 +4,7 @@ import os
 import configparser
 import shutil
 import logging
+import glob
 # simple log
 logging.basicConfig(format="%(levelname)-8s:%(message)s", level=logging.INFO)
 logging.info("current working dir: %s", os.getcwd())
@@ -64,6 +65,7 @@ class Config:
 
     def options(self, field):
         return self._cf.options(field)
+
 
 def read_config(config_file_path, field, key, default=""):
     cf = configparser.ConfigParser()
@@ -139,3 +141,17 @@ def copy(src, dst, root=None, exts: list=None):
                     copy(srcname, dstname, root)
     except Exception as e:
         print(e)
+
+
+def search_file(glob_pattern, drive=None):
+    drive = drive or ('C', 'D', 'E', 'F', 'G', 'H', 'I')
+    pattern = "%s:/" + glob_pattern
+    find = False
+    for d in drive:
+        result = glob.glob(pattern % d)
+        if len(result) > 0:
+            return result
+
+    if not find:
+        print("Can't find files of pattern: " + glob_pattern)
+

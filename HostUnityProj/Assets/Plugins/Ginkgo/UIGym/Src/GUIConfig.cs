@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using ScreenMatchMode = FairyGUI.UIContentScaler.ScreenMatchMode;
+//using ScreenMatchMode = FairyGUI.UIContentScaler.ScreenMatchMode;
 
 namespace Ginkgo.UI
 {
@@ -10,8 +10,8 @@ namespace Ginkgo.UI
         [Header("设计分辨率高：")]
         public int designResoHeight = 768;
 
-        [Header("屏幕缩放模式：")]
-        public ScreenMatchMode screenMatchMode = ScreenMatchMode.MatchWidthOrHeight;
+        //[Header("屏幕缩放模式：")]
+        //public ScreenMatchMode screenMatchMode = ScreenMatchMode.MatchWidthOrHeight;
 
         [Header("相对于Resources目录:")]
         public string LocalUIAssetsPath = "UI";

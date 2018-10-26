@@ -19,8 +19,28 @@ if not gitpath:
     logging.warning("git not found in path, install it first.")
     exit(0)
 
-#clone project.
 cfg = utils.Config(pluglist)
+unity_path = cfg.get("DEFAULT", "unity", None)
+if not unity_path or not os.path.isfile(unity_path):
+    #search unity.exe
+    logging.info("Search Unity.exe...")
+    unity_paths = utils.search_file("*/Unity/Editor/Unity.exe")
+    if not unity_paths:
+        unity_paths = utils.search_file("*/Unity/Hub/Editor/Unity.exe")
+    unity_path = unity_paths[0]
+if unity_path:
+    logging.info("Unity path is: " + unity_path)
+    dir_name = os.path.dirname(unity_path)
+    unityengine_dir = os.path.join(dir_name, "Data/Managed/UnityEngine/")
+    unity_assemblies_dir = os.path.join(buildplug.libroot, buildplug.lib_name, buildplug.unity_assemblies)
+    #copy unity assemblies to lib folder.
+    utils.copy(unityengine_dir + "UnityEngine.dll", unity_assemblies_dir)
+    utils.copy(unityengine_dir + "UnityEngine.dll.mdb", unity_assemblies_dir)
+    unityengine_dir = os.path.join(dir_name, "Data/UnityExtensions/Unity/GUISystem/")
+    utils.copy(unityengine_dir + "UnityEngine.UI.dll", unity_assemblies_dir)
+    utils.copy(unityengine_dir + "UnityEngine.UI.dll.mdb", unity_assemblies_dir)
+
+#clone plug project.
 plugs = buildplug.getusedplugs(cfg)
 
 for plug in plugs:

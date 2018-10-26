@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if USE_FGUI
+using System;
 using UnityEngine;
 using FairyGUI;
 using Ginkgo.IOC;
@@ -261,3 +262,4 @@ namespace Ginkgo.UI
         }
     }
 }
+#endif

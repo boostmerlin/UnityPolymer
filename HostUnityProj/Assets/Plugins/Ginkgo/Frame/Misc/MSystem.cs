@@ -256,15 +256,16 @@ namespace Ginkgo
             MainThreadId = Thread.CurrentThread.ManagedThreadId;
             Log.Common.Print("MLIntialize on Main Thread: {0}", MainThreadId);
             WWWLoader.UrlRoot = GinkgoConfig.Selfie.ServerRootPath;
-#if USE_UGUI
-#else
+#if USE_FGUI
             Container.Register<IUIManagerService, FGUIService>();
+#else
+
+#endif
             bool ok = GUIManager.Selfie.Check();
-            if(!ok)
+            if (!ok)
             {
                 Log.Common.PrintWarning("GUIManager Not ready.");
             }
-#endif
 #if DEBUG_ML
             ReflectionUtil.LogAssemblyInfo();
             LogDeviceInfo();
