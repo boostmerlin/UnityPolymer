@@ -1,5 +1,5 @@
 syntax = "proto3";
-package hello;
+package Hello;
 
 message HelloRequest {
     string greeting = 1;
@@ -20,6 +20,6 @@ message WorldResponse {
 }
 
 service WorldService {
-    rpc SayHello(HelloRequest) returns (HelloResponse);
+    rpc SayHello(HelloRequest) returns (WorldResponse);
     rpc SayWorld(WorldRequest) returns (WorldResponse);
 }

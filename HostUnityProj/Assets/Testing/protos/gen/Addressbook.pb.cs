@@ -22,16 +22,16 @@ namespace Google.Protobuf.Examples.AddressBook {
     static AddressbookReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFhZGRyZXNzYm9vay5wcm90bxIIdHV0b3JpYWwaDXZlcnNpb24ucHJvdG8i",
-            "1QEKBlBlcnNvbhIMCgRuYW1lGAEgASgJEgoKAmlkGAIgASgFEg0KBWVtYWls",
-            "GAMgASgJEiwKBnBob25lcxgEIAMoCzIcLnR1dG9yaWFsLlBlcnNvbi5QaG9u",
-            "ZU51bWJlchpHCgtQaG9uZU51bWJlchIOCgZudW1iZXIYASABKAkSKAoEdHlw",
-            "ZRgCIAEoDjIaLnR1dG9yaWFsLlBlcnNvbi5QaG9uZVR5cGUiKwoJUGhvbmVU",
-            "eXBlEgoKBk1PQklMRRAAEggKBEhPTUUQARIICgRXT1JLEAIiLwoLQWRkcmVz",
-            "c0Jvb2sSIAoGcGVvcGxlGAEgAygLMhAudHV0b3JpYWwuUGVyc29uQieqAiRH",
-            "b29nbGUuUHJvdG9idWYuRXhhbXBsZXMuQWRkcmVzc0Jvb2tiBnByb3RvMw=="));
+            "ChFhZGRyZXNzYm9vay5wcm90bxIIdHV0b3JpYWwi1QEKBlBlcnNvbhIMCgRu",
+            "YW1lGAEgASgJEgoKAmlkGAIgASgFEg0KBWVtYWlsGAMgASgJEiwKBnBob25l",
+            "cxgEIAMoCzIcLnR1dG9yaWFsLlBlcnNvbi5QaG9uZU51bWJlchpHCgtQaG9u",
+            "ZU51bWJlchIOCgZudW1iZXIYASABKAkSKAoEdHlwZRgCIAEoDjIaLnR1dG9y",
+            "aWFsLlBlcnNvbi5QaG9uZVR5cGUiKwoJUGhvbmVUeXBlEgoKBk1PQklMRRAA",
+            "EggKBEhPTUUQARIICgRXT1JLEAIiLwoLQWRkcmVzc0Jvb2sSIAoGcGVvcGxl",
+            "GAEgAygLMhAudHV0b3JpYWwuUGVyc29uQieqAiRHb29nbGUuUHJvdG9idWYu",
+            "RXhhbXBsZXMuQWRkcmVzc0Jvb2tiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Versons.Common.VersionReflection.Descriptor, },
+          new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Person), global::Google.Protobuf.Examples.AddressBook.Person.Parser, new[]{ "Name", "Id", "Email", "Phones" }, null, new[]{ typeof(global::Google.Protobuf.Examples.AddressBook.Person.Types.PhoneType) }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Person.Types.PhoneNumber), global::Google.Protobuf.Examples.AddressBook.Person.Types.PhoneNumber.Parser, new[]{ "Number", "Type" }, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.AddressBook), global::Google.Protobuf.Examples.AddressBook.AddressBook.Parser, new[]{ "People" }, null, null, null)

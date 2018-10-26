@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='HelloRpc.proto',
   package='hello',
   syntax='proto3',
-  serialized_pb=_b('\n\x0eHelloRpc.proto\x12\x05hello\" \n\x0cHelloRequest\x12\x10\n\x08greeting\x18\x01 \x01(\t\".\n\rHelloResponse\x12\r\n\x05reply\x18\x01 \x01(\t\x12\x0e\n\x06number\x18\x04 \x03(\x05\" \n\x0cWorldRequest\x12\x10\n\x08greeting\x18\x01 \x01(\t\"\x1e\n\rWorldResponse\x12\r\n\x05reply\x18\x01 \x01(\t2E\n\x0cHelloService\x12\x35\n\x08SayHello\x12\x13.hello.HelloRequest\x1a\x14.hello.HelloResponse2|\n\x0cWorldService\x12\x35\n\x08SayHello\x12\x13.hello.HelloRequest\x1a\x14.hello.HelloResponse\x12\x35\n\x08SayWorld\x12\x13.hello.WorldRequest\x1a\x14.hello.WorldResponseb\x06proto3')
+  serialized_pb=_b('\n\x0eHelloRpc.proto\x12\x05hello\" \n\x0cHelloRequest\x12\x10\n\x08greeting\x18\x01 \x01(\t\".\n\rHelloResponse\x12\r\n\x05reply\x18\x01 \x01(\t\x12\x0e\n\x06number\x18\x04 \x03(\x05\" \n\x0cWorldRequest\x12\x10\n\x08greeting\x18\x01 \x01(\t\"\x1e\n\rWorldResponse\x12\r\n\x05reply\x18\x01 \x01(\t2E\n\x0cHelloService\x12\x35\n\x08SayHello\x12\x13.hello.HelloRequest\x1a\x14.hello.HelloResponse2|\n\x0cWorldService\x12\x35\n\x08SayHello\x12\x13.hello.HelloRequest\x1a\x14.hello.WorldResponse\x12\x35\n\x08SayWorld\x12\x13.hello.WorldRequest\x1a\x14.hello.WorldResponseb\x06proto3')
 )
 
 

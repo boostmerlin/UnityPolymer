@@ -22,14 +22,14 @@ namespace Hello {
     static HelloRpcReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5IZWxsb1JwYy5wcm90bxIFaGVsbG8iIAoMSGVsbG9SZXF1ZXN0EhAKCGdy",
+            "Cg5IZWxsb1JwYy5wcm90bxIFSGVsbG8iIAoMSGVsbG9SZXF1ZXN0EhAKCGdy",
             "ZWV0aW5nGAEgASgJIi4KDUhlbGxvUmVzcG9uc2USDQoFcmVwbHkYASABKAkS",
             "DgoGbnVtYmVyGAQgAygFIiAKDFdvcmxkUmVxdWVzdBIQCghncmVldGluZxgB",
             "IAEoCSIeCg1Xb3JsZFJlc3BvbnNlEg0KBXJlcGx5GAEgASgJMkUKDEhlbGxv",
-            "U2VydmljZRI1CghTYXlIZWxsbxITLmhlbGxvLkhlbGxvUmVxdWVzdBoULmhl",
+            "U2VydmljZRI1CghTYXlIZWxsbxITLkhlbGxvLkhlbGxvUmVxdWVzdBoULkhl",
             "bGxvLkhlbGxvUmVzcG9uc2UyfAoMV29ybGRTZXJ2aWNlEjUKCFNheUhlbGxv",
-            "EhMuaGVsbG8uSGVsbG9SZXF1ZXN0GhQuaGVsbG8uSGVsbG9SZXNwb25zZRI1",
-            "CghTYXlXb3JsZBITLmhlbGxvLldvcmxkUmVxdWVzdBoULmhlbGxvLldvcmxk",
+            "EhMuSGVsbG8uSGVsbG9SZXF1ZXN0GhQuSGVsbG8uV29ybGRSZXNwb25zZRI1",
+            "CghTYXlXb3JsZBITLkhlbGxvLldvcmxkUmVxdWVzdBoULkhlbGxvLldvcmxk",
             "UmVzcG9uc2ViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },

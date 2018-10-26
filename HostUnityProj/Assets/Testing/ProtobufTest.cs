@@ -1,18 +1,44 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Google.Protobuf;
 using Google.Protobuf.Examples.AddressBook;
 using System.IO;
 using System;
-using ML.Net;
+using Ginkgo.Net;
 using UnityEngine.Assertions;
+using System.Reflection;
+using Hello;
+using Ginkgo;
+
+public class MsgService : BaseMsgService
+{
+    [NetSender(Package = "Hello")]
+    public void HelloRequest(IMessage req)
+    {
+        Debug.Log("HelloRequest Send");
+        var msg = req as HelloRequest;
+        msg.Greeting = "hello server";
+    }
+
+    public void hello_HelloRequest(IMessage req)
+    {
+    }
+
+    [NetHandler]
+    public void HelloResponse(Hello.HelloResponse res)
+    {
+        Debug.Log("HelloResponse : " + res.ToString());
+    }
+}
 
 public class ProtobufTest : MonoBehaviour
 {
-    TcpConnection tcpConnection;
+    NetChannel netChannel;
     void basicTest()
     {
+        var assembly = Assembly.GetExecutingAssembly();
+        Debug.Log(assembly.FullName);
         byte[] bytes;
         // Create a new person
         Person person = new Person
@@ -45,51 +71,53 @@ public class ProtobufTest : MonoBehaviour
         Debug.Log(restored.ToString());
 
         var r = Hello.HelloRpcReflection.Descriptor;
-
+        
         Debug.Log(r.ToString());
-
     }
 
     void Start()
     {
+        Debug.Log("Protobuf Test Begin....");
         basicTest();
+        netChannel = new NetChannel("127.0.0.1", 9999);
+        var tcpConnection = netChannel.Connection;
+        tcpConnection.OnConnect += new SocketStateHandler((ss, ok) =>
+        {
+            Debug.LogFormat("connect state: {0}, ok?{1}", ss.ToString(), ok);
+        });
+        tcpConnection.OnStateReport += new SocketMessageHandler((msg) =>
+        {
+            Debug.Log(msg);
+        });
+        StartCoroutine(delayExecute());
+    }
+
+    IEnumerator delayExecute()
+    {
+        yield return new WaitForSeconds(0.5f);
+
         msgTest();
-        tcpConnection = new TcpConnection();
-        tcpConnection.OnConnect += new ConnectionHandler((ss, ok) =>
-        {
-            Debug.LogFormat("connect state: {0}, {1}", ss.ToString(), ok);
-        });
-        tcpConnection.OnStateReport += new StateReportHandler((msg) =>
-        {
-            Debug.LogFormat(msg);
-        });
     }
 
     private void OnDestroy()
     {
-        tcpConnection.Disconnect();
-    }
-
-    void netConnect()
-    {
-        tcpConnection.BeginConnect("127.0.0.1", 9999);
+        netChannel.Close();
     }
 
     private void OnGUI()
     {
-        if(GUILayout.Button("Connect"))
+        if(GUILayout.Button("HelloRequest"))
         {
-            netConnect();
+            //  NetChannel.SendMsg("HelloRequest");
+            NetChannel.Send<HelloRequest>();
         }
     }
-
 
     void msgTest()
     {
         int headLen = MsgHead.GetLength();
         Debug.Log("MsgHead.GetLength " + headLen);
         MsgHead.DefaultHead.MsgId = 123;
-        MsgHead.DefaultHead.ServiceId = 321;
         MsgHead.DefaultHead.EncodeHead(100);
         var datas = MsgHead.DefaultHead.GetBytes();
 
@@ -99,7 +127,6 @@ public class ProtobufTest : MonoBehaviour
         head.DecodeHead(datas);
 
         Debug.Log("head.msgid=" + head.MsgId);
-        Debug.Log("head.serviceid=" + head.ServiceId);
         Debug.Log("head.length=" + head.Length);
 
 
@@ -107,10 +134,26 @@ public class ProtobufTest : MonoBehaviour
         {
             Id = 1,
             Name = "Foo",
-            Email = "foo@bar",
+            Email = "foo@bar.com",
             Phones = { new Person.Types.PhoneNumber { Number = "555-1212" } }
         };
-        NetMsg msg = NetMsg.Create(111);
+        NetMsg msg = NetMsg.Create();
         msg.ProtobufMessage = person;
+
+        Debug.Log(Person.Descriptor.ClrType.FullName);
+        Debug.Log(Person.Descriptor.Name);
+        Debug.Log(Person.Descriptor.File.Package);
+        foreach(var f in Person.Descriptor.Fields.InFieldNumberOrder())
+        {
+            Debug.Log(f.FullName);
+        }
+        Assert.AreEqual(Person.Descriptor.Parser, Person.Parser);
+
+        datas = msg.EncodeToBytes();
+        Debug.Log("datas = " + datas.Length);
+
+        NetMsg.Default.DecodeFromBytes<Person>(datas);
+
+        Debug.Log(NetMsg.Default.ToString());
     }
 }
