@@ -1,3 +1,4 @@
+#if true
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -58,22 +59,19 @@ public class ProtobufTest : MonoBehaviour
         Person copy = Person.Parser.ParseFrom(bytes);
         AddressBook book = new AddressBook
         {
-            People = { copy }
+            Person = copy,
         };
         bytes = book.ToByteArray();
         // And read the address book back again
         AddressBook restored = AddressBook.Parser.ParseFrom(bytes);
-        var a = AddressBook.Descriptor;
+        //var a = AddressBook.Descriptor;
         // The message performs a deep-comparison on equality:
-        if (restored.People.Count != 1 || !person.Equals(restored.People[0]))
-        {
-            throw new Exception("There is a bad person in here!");
-        }
-        Debug.Log(restored.ToString());
+        Debug.Log("restored book: " + restored.ToString());
+        Debug.Log(restored.MsgUnionCase);
 
-        var r = Hello.HelloRpcReflection.Descriptor;
-        
-        Debug.Log(r.ToString());
+        // var r = Hello.HelloRpcReflection.Descriptor;
+
+        //Debug.Log(r.ToString());
     }
 
     void Start()
@@ -102,7 +100,8 @@ public class ProtobufTest : MonoBehaviour
 
     private void OnDestroy()
     {
-        netChannel.Close();
+        if(netChannel != null)
+            netChannel.Close();
     }
 
     private void OnGUI()
@@ -141,14 +140,14 @@ public class ProtobufTest : MonoBehaviour
         NetMsg msg = NetMsg.Create();
         msg.ProtobufMessage = person;
 
-        Debug.Log(Person.Descriptor.ClrType.FullName);
-        Debug.Log(Person.Descriptor.Name);
-        Debug.Log(Person.Descriptor.File.Package);
-        foreach(var f in Person.Descriptor.Fields.InFieldNumberOrder())
-        {
-            Debug.Log(f.FullName);
-        }
-        Assert.AreEqual(Person.Descriptor.Parser, Person.Parser);
+        //Debug.Log(Person.Descriptor.ClrType.FullName);
+        //Debug.Log(Person.Descriptor.Name);
+        //Debug.Log(Person.Descriptor.File.Package);
+        //foreach(var f in Person.Descriptor.Fields.InFieldNumberOrder())
+        //{
+        //    Debug.Log(f.FullName);
+        //}
+        //Assert.AreEqual(Person.Descriptor.Parser, Person.Parser);
 
         datas = msg.EncodeToBytes();
         Debug.Log("datas = " + datas.Length);
@@ -158,3 +157,4 @@ public class ProtobufTest : MonoBehaviour
         Debug.Log(NetMsg.Default.ToString());
     }
 }
+#endif

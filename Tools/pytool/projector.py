@@ -10,7 +10,6 @@ import sys
 
 __hostunityprojpath = r"..\..\HostUnityProj"
 
-uniplugfolder = "Plugins"
 config = "debug"
 
 def create(args):
@@ -35,7 +34,8 @@ def create(args):
         projname = cfg.get(plug, "projname")
         srcroot = cfg.get(plug, "srcroot")
         usedll = cfg.getbool(plug, "usedll")
-        plugdestfolder = os.path.join(args.pathname, "Assets", uniplugfolder, uniplugroot)
+        plugfolder = cfg.get(plug, "plugfolder", "Assets/Plugins")
+        plugdestfolder = os.path.join(args.pathname, plugfolder, uniplugroot)
         logging.info("copy plug : " + plug)
 
         ref_dll_list = [cfg.get(plug, x) for x in cfg.options(plug) if x.startswith("refdll_")]
@@ -100,6 +100,7 @@ def compilemodule(args):
         if csproj:
             buildplug.gen_dll(csproj)
             buildplug.gain_dll(plug, clean)
+
 
 parser = argparse.ArgumentParser()
 parser.set_defaults(help="useless")

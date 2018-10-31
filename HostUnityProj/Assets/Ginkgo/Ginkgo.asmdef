@@ -1,0 +1,9 @@
+{
+    "name": "Ginkgo",
+    "references": [
+        "UniRx",
+        "Third"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}

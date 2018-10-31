@@ -36,8 +36,16 @@ message Person {
   repeated PhoneNumber phones = 4;
 }
 
+message Person2 {
+    int32 personid = 1;
+}
+
 // Our address book file is just one of these.
 message AddressBook {
-  repeated Person people = 1;
+  oneof msg_union {
+    Person person = 2;
+    Person2 person2 = 1;
+    int32 intbbb = 3;
+  }
 }
 // [END messages]

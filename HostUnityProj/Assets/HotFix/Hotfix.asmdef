@@ -1,0 +1,10 @@
+{
+    "name": "Hotfix.Game",
+    "references": [
+        "Ginkgo",
+        "Third",
+        "UniRx"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}
