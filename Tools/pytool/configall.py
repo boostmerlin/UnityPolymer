@@ -23,7 +23,7 @@ cfg = utils.Config(pluglist)
 unity_path = cfg.get("DEFAULT", "unity", None)
 if not unity_path or not os.path.isfile(unity_path):
     #search unity.exe
-    logging.info("Search Unity.exe...") 
+    logging.info("Search Unity.exe...")
     unity_paths = utils.search_file("*/Unity/Editor/Unity.exe")
     if not unity_paths:
         unity_paths = utils.search_file("*/Unity/Hub/Editor/Unity.exe")

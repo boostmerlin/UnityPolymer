@@ -61,6 +61,7 @@ namespace CSProjTemplate
                 "mscorlib",
                 "System.Runtime.Serialization",
                 "System.Xml.Linq",
+                "System.XML",
                 "System.Data.DataSetExtensions",
                 "System.Data"
                 );

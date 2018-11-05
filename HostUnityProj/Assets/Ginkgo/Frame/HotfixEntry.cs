@@ -5,6 +5,9 @@ using UnityEngine;
 using System;
 using Ginkgo;
 
+/// <summary>
+/// 热更工程的加载入口
+/// </summary>
 public class HotfixEntry
 {
 #if ILRUNTIME

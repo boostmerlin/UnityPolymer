@@ -12,7 +12,7 @@ namespace Ginkgo
     {
         public int MainThreadId { get; set; }
 
-        public string RunningPlatName { get; private set; }
+        public string RunningPlatformName { get; private set; }
 
         static MSystem _ins;
 
@@ -223,14 +223,14 @@ namespace Ginkgo
                     {
                         if (lower.Contains(s))
                         {
-                            RunningPlatName = array[0];
+                            RunningPlatformName = array[0];
                             set = true;
                         }
                     });
                 }
                 else if (lower.Contains(text))
                 {
-                    RunningPlatName = text;
+                    RunningPlatformName = text;
                     set = true;
                 }
                 if (set)

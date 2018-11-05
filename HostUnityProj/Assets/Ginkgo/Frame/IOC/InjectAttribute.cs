@@ -2,7 +2,6 @@
 /// This is The simple IOC Framework from uFrame.
 /// </summary>
 using System;
-
 namespace Ginkgo.IOC
 {
     /// <summary>

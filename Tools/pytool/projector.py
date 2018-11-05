@@ -7,6 +7,7 @@ import os
 import logging
 import glob
 import sys
+import cmdrunner
 
 __hostunityprojpath = r"..\..\HostUnityProj"
 
@@ -33,6 +34,7 @@ def create(args):
         root = cfg.get(plug, "root")
         projname = cfg.get(plug, "projname")
         srcroot = cfg.get(plug, "srcroot")
+        srcdirs = cfg.get(plug, "srcdir")
         usedll = cfg.getbool(plug, "usedll")
         plugfolder = cfg.get(plug, "plugfolder", "Assets/Plugins")
         plugdestfolder = os.path.join(args.pathname, plugfolder, uniplugroot)
@@ -47,15 +49,31 @@ def create(args):
 
         if not usedll:# copy sources file.
             plugfoler = os.path.join(buildplug.modulefolder, plug, root, srcroot)
+            # plugfoler = os.path.abspath(plugfolder)
             if not os.path.isdir(plugfoler):
                 logging.warning("plug [%s] src files not exist?", plug)
                 continue
             exts = cfg.get("DEFAULT", "srcexts", None)
             if exts:
                 exts = exts.split(';')
-            utils.copy(plugfoler, os.path.join(plugdestfolder, projname), plugfoler, exts)
-            #shutil.copytree(plugfoler, os.path.join(plugdestfolder, projname))
-        else: # copy dll
+
+            copyrootdir = os.path.join(plugdestfolder, projname)
+            if srcdirs:
+                srcdirs = srcdirs.split(';')
+                for srcdir in srcdirs:
+                    copysrcdir = os.path.join(plugfolder, srcdir)
+                    if not os.path.isdir(copysrcdir):
+                        continue
+                    destfolder = os.path.join(copyrootdir, srcdir)
+                    utils.copy(copysrcdir, destfolder, copysrcdir, exts)
+                    delfolders = cfg.get(plug, "del")
+                    delfolders = delfolders.split(';')
+                    for delfolder in delfolders:
+                        cmdrunner.system("rd /s /q " + os.path.join(destfolder, delfolder))
+            else:
+                utils.copy(plugfoler, copyrootdir, plugfoler, exts)
+                # shutil.copytree(plugfoler, os.path.join(plugdestfolder, projname))
+        else:  # copy dll
             dllfolder = buildplug.modulefolder + "Dll"
             config = args.config
             if not os.path.isdir(dllfolder):

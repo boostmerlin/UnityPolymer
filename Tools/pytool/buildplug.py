@@ -43,9 +43,6 @@ def getusedplugs(cfg: utils.Config):
     allset = allset.difference(skips)
     return list(allset.union(depends))
 
-
-
-
 def gen_csproj(plug: str):
     cfg = utils.Config(moduleini)
     usedll = utils.str2bool(cfg.get(plug, "usedll"))
